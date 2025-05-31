@@ -4,7 +4,7 @@ import torch
 import cv2
 import numpy as np
 
-from MambaGlue.mambaglue.mambaglue import MambaGlue
+from mambaglue.mambaglue import MambaGlue
 from mambaglue.superpoint import SuperPoint
 from mambaglue.utils import read_image, numpy_image_to_torch, match_pair
 from mambaglue.viz2d import plot_images, plot_matches, save_plot
