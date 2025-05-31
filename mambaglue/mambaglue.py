@@ -587,12 +587,12 @@ class MambaGlue(nn.Module):
         state_dict = None
         if features is not None:
             # When using released weight
-            # fname = f"{conf.weights}_{self.version.replace('.', '-')}.tar"
-            # state_dict = torch.hub.load_state_dict_from_url(
-            #     self.url.format(self.version, features), file_name=fname
-            # )
+            fname = f"{conf.weights}_{self.version.replace('.', '-')}.tar"
+            state_dict = torch.hub.load_state_dict_from_url(
+                 self.url.format(self.version, features), file_name=fname
+            )
 
-            ##### LOCAL weight
+            '''##### LOCAL weight
             local_path = Path(
                 "checkpoint_best.tar"
             )  # local path for your own weight (.tar or .pth)
@@ -613,7 +613,7 @@ class MambaGlue(nn.Module):
                     "The checkpoint does not contain 'model' key. Available keys are: ",
                     checkpoint.keys(),
                 )
-
+            '''
             # Load the state dict into your model
             self.load_state_dict(state_dict, strict=False)
         elif conf.weights is not None:
