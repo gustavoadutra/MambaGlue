@@ -157,7 +157,9 @@ def match_pair(
 ):
     """Match a pair of images (image0, image1) with an extractor and matcher"""
     feats0 = extractor.extract(image0, **preprocess)
+    print(f"Extracted {feats0['keypoints'].shape[0]} keypoints from image0")
     feats1 = extractor.extract(image1, **preprocess)
+    print(f"Extracted {feats1['keypoints'].shape[0]} keypoints from image1")
     matches01 = matcher({"image0": feats0, "image1": feats1})
     data = [feats0, feats1, matches01]
     # remove batch dim and move to target device
